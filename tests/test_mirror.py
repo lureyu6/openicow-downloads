@@ -49,6 +49,10 @@ class MirrorTests(unittest.TestCase):
     def test_empty_and_real_index_are_valid(self):
         self.assertEqual(mirror.load_index(self.index([])), [])
         self.assertEqual(mirror.load_index(self.index([self.release])), [self.release])
+        notice = copy.deepcopy(self.release)
+        notice['assets'][0]['name'] = 'THIRD-PARTY-LICENSES.txt'
+        notice['assets'][0]['url'] = 'https://openicow.com/downloads/0.3.0-preview.2/THIRD-PARTY-LICENSES.txt'
+        self.assertEqual(mirror.load_index(self.index([notice])), [notice])
 
     def test_url_path_names_sizes_and_duplicate_tags_are_rejected(self):
         bad = [

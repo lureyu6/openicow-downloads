@@ -44,7 +44,7 @@ def load_index(path):
             name = asset['name']
             if not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]{0,199}', name):
                 raise ValueError('invalid asset name')
-            if name in names or version not in name or Path(name).suffix.lower() not in {'.dmg', '.zip', '.exe', '.apk', '.txt'}:
+            if name in names or Path(name).suffix.lower() not in {'.dmg', '.zip', '.exe', '.apk', '.txt'}:
                 raise ValueError('invalid or duplicate asset name')
             names.add(name)
             if asset['url'] != f'https://openicow.com/downloads/{version}/{name}':
