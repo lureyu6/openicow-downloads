@@ -5,7 +5,7 @@
 - 官网：<https://openicow.com/>
 - GitHub 下载：<https://github.com/lureyu6/openicow-downloads/releases>
 
-当前索引为空，安装包将在官网对应版本完成发布后加入。平台、签名和功能限制以官网说明及对应版本说明为准。
+安装包在官网对应版本完成发布后加入索引。平台、签名和功能限制以官网说明及对应版本说明为准。
 
 ## 镜像流程
 

@@ -113,8 +113,8 @@ class MirrorTests(unittest.TestCase):
                 mirror.mirror(self.release, 'example/downloads')
         self.assertEqual([call.args[:2] for call in gh.call_args_list], [('release', 'upload')])
 
-    def test_only_confirmed_404_means_release_missing(self):
-        for stderr, missing in [('gh: Not Found (HTTP 404)', True), ('connection timed out', False), ('gh: Forbidden (HTTP 403)', False)]:
+    def test_only_explicit_release_not_found_means_missing(self):
+        for stderr, missing in [('release not found\n', True), ('connection timed out', False), ('gh: Forbidden (HTTP 403)', False), ('gh: Not Found (HTTP 404)', False)]:
             process = subprocess.CompletedProcess(['gh'], 1, stdout='', stderr=stderr)
             with self.subTest(stderr=stderr), patch.object(mirror.subprocess, 'run', return_value=process):
                 if missing:
@@ -122,6 +122,26 @@ class MirrorTests(unittest.TestCase):
                 else:
                     with self.assertRaises(subprocess.CalledProcessError):
                         mirror.existing_release('example/downloads', self.release['tag'])
+
+
+    def test_draft_is_loaded_by_release_id_even_before_its_tag_exists(self):
+        api_url = 'https://api.github.com/repos/example/downloads/releases/1234'
+        draft = {**self.record, 'draft': True}
+        responses = [
+            subprocess.CompletedProcess(['gh'], 0, stdout=json.dumps({'apiUrl': api_url}), stderr=''),
+            subprocess.CompletedProcess(['gh'], 0, stdout=json.dumps(draft), stderr=''),
+        ]
+        with patch.object(mirror.subprocess, 'run', side_effect=responses) as run:
+            self.assertEqual(mirror.existing_release('example/downloads', self.release['tag']), draft)
+        self.assertEqual(run.call_args_list[0].args[0], ['gh', 'release', 'view', self.release['tag'], '--repo', 'example/downloads', '--json', 'apiUrl'])
+        self.assertEqual(run.call_args_list[1].args[0], ['gh', 'api', api_url])
+
+    def test_lookup_cannot_redirect_the_api_read_to_another_repository(self):
+        result = subprocess.CompletedProcess(['gh'], 0, stdout=json.dumps({'apiUrl': 'https://api.github.com/repos/other/downloads/releases/1234'}), stderr='')
+        with patch.object(mirror.subprocess, 'run', return_value=result), patch.object(mirror, 'gh') as gh:
+            with self.assertRaisesRegex(ValueError, 'unexpected GitHub release API URL'):
+                mirror.existing_release('example/downloads', self.release['tag'])
+        gh.assert_not_called()
 
 
 if __name__ == '__main__':

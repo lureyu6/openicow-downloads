@@ -1,4 +1,29 @@
 {
   "schemaVersion": 1,
-  "releases": []
+  "releases": [
+    {
+      "tag": "openicow-v0.3.0-preview.1",
+      "version": "0.3.0-preview.1",
+      "assets": [
+        {
+          "name": "OpenICow-0.3.0-preview.1-Android-arm64.apk",
+          "url": "https://openicow.com/downloads/0.3.0-preview.1/OpenICow-0.3.0-preview.1-Android-arm64.apk",
+          "bytes": 40329472,
+          "sha256": "62ba3a2f7911184266642e3d5e02e97736917971305578a5ecfcbf53b6000534"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "url": "https://openicow.com/downloads/0.3.0-preview.1/SHA256SUMS.txt",
+          "bytes": 216,
+          "sha256": "34482c625caa4dad9fb77d03301c156f9314d5d7f872f360d17f932d4e94ba9f"
+        },
+        {
+          "name": "THIRD-PARTY-LICENSES.txt",
+          "url": "https://openicow.com/downloads/0.3.0-preview.1/THIRD-PARTY-LICENSES.txt",
+          "bytes": 865336,
+          "sha256": "b67f8dd396195e841fe2667e6bffa71d1c73e6e9b9531eff091d656aca046bc6"
+        }
+      ]
+    }
+  ]
 }

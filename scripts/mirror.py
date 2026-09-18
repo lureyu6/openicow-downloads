@@ -83,12 +83,15 @@ def gh(*arguments):
 
 
 def existing_release(repo, tag):
-    result = subprocess.run(['gh', 'api', f'repos/{repo}/releases/tags/{tag}'], capture_output=True, text=True)
+    result = subprocess.run(['gh', 'release', 'view', tag, '--repo', repo, '--json', 'apiUrl'], capture_output=True, text=True)
     if result.returncode:
-        if '(HTTP 404)' in result.stderr:
+        if result.stderr.strip() == 'release not found':
             return None
         raise subprocess.CalledProcessError(result.returncode, result.args, result.stdout, result.stderr)
-    return json.loads(result.stdout)
+    api_url = json.loads(result.stdout).get('apiUrl')
+    if not isinstance(api_url, str) or not re.fullmatch(r'https://api\.github\.com/repos/' + re.escape(repo) + r'/releases/[0-9]+', api_url):
+        raise ValueError('unexpected GitHub release API URL')
+    return json.loads(gh('api', api_url))
 
 
 def matches(existing, assets):
