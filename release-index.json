@@ -24,6 +24,36 @@
           "sha256": "b67f8dd396195e841fe2667e6bffa71d1c73e6e9b9531eff091d656aca046bc6"
         }
       ]
+    },
+    {
+      "tag": "openicow-v0.3.0-preview.2",
+      "version": "0.3.0-preview.2",
+      "assets": [
+        {
+          "name": "OpenICow-0.3.0-preview.2-SHA256SUMS.txt",
+          "url": "https://openicow.com/downloads/0.3.0-preview.2/OpenICow-0.3.0-preview.2-SHA256SUMS.txt",
+          "bytes": 327,
+          "sha256": "c604e7de30de9c295f47188f354323bf8c896ae56a8e19b0cee76edf31dad3c0"
+        },
+        {
+          "name": "OpenICow-0.3.0-preview.2-Windows-x64-setup.exe",
+          "url": "https://openicow.com/downloads/0.3.0-preview.2/OpenICow-0.3.0-preview.2-Windows-x64-setup.exe",
+          "bytes": 765342895,
+          "sha256": "510490f78070c56261fd225c54cc6de5f0ab63b58da5acebe061643602c4394d"
+        },
+        {
+          "name": "OpenICow-0.3.0-preview.2-Windows-x64.zip",
+          "url": "https://openicow.com/downloads/0.3.0-preview.2/OpenICow-0.3.0-preview.2-Windows-x64.zip",
+          "bytes": 789761762,
+          "sha256": "42ca59b757828db49f43bfcf08866844491f9b3ec309b5e14bc669f0bfed800c"
+        },
+        {
+          "name": "OpenICow-0.3.0-preview.2-macOS-arm64.dmg",
+          "url": "https://openicow.com/downloads/0.3.0-preview.2/OpenICow-0.3.0-preview.2-macOS-arm64.dmg",
+          "bytes": 748199485,
+          "sha256": "426657bc217729f1d088704436e8a870ac36f96c68be567c5e0cc26c33d0f6bd"
+        }
+      ]
     }
   ]
 }
