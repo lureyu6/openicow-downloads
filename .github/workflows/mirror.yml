@@ -1,0 +1,67 @@
+name: Mirror verified downloads
+
+on:
+  push:
+    branches: [main]
+    paths: [release-index.json]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Check the index only, or publish verified package mirrors
+        required: true
+        type: choice
+        options: [check, publish]
+        default: check
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openicow-download-mirror
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Test integrity boundaries and validate the public index
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tests 2>&1 | tee mirror-report-tests.log
+          python3 scripts/mirror.py --mode check 2>&1 | tee mirror-report-check.log
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        if: always()
+        with:
+          name: mirror-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: mirror-report*.log
+          retention-days: 14
+  publish:
+    needs: check
+    if: github.event_name == 'push' || inputs.mode == 'publish'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Mirror only verified website assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/mirror.py --mode publish 2>&1 | tee mirror-report-publish.log
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        if: always()
+        with:
+          name: mirror-publish-${{ github.run_id }}-${{ github.run_attempt }}
+          path: mirror-report*.log
+          retention-days: 14
