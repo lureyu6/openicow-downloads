@@ -54,6 +54,18 @@
           "sha256": "426657bc217729f1d088704436e8a870ac36f96c68be567c5e0cc26c33d0f6bd"
         }
       ]
+    },
+    {
+      "tag": "openicow-v0.4.0",
+      "version": "0.4.0",
+      "assets": [
+        {
+          "name": "OpenICow-0.4.0-macOS-arm64.zip",
+          "url": "https://openicow.com/downloads/0.4.0/OpenICow-0.4.0-macOS-arm64.zip",
+          "bytes": 676040653,
+          "sha256": "ae55a745851abea2f6f5bd001b90ee272a83f459fc45bdeadd0126ca107481c0"
+        }
+      ]
     }
   ]
 }
