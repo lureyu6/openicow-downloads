@@ -96,6 +96,42 @@
           "sha256": "63e2d38a02294122dfb3743e7477fdd4b26d84b3347043f70f906c2c2a697a16"
         }
       ]
+    },
+    {
+      "tag": "openicow-v0.4.2",
+      "version": "0.4.2",
+      "assets": [
+        {
+          "name": "OpenICow-0.4.2-Android-arm64.apk",
+          "url": "https://openicow.com/downloads/0.4.2/OpenICow-0.4.2-Android-arm64.apk",
+          "bytes": 40388688,
+          "sha256": "93e91243227a1c582574939a2feace2fa800b259a1012d6d4ed9a935e5a1cfee"
+        },
+        {
+          "name": "OpenICow-0.4.2-THIRD-PARTY-LICENSES.txt",
+          "url": "https://openicow.com/downloads/0.4.2/OpenICow-0.4.2-THIRD-PARTY-LICENSES.txt",
+          "bytes": 865336,
+          "sha256": "b67f8dd396195e841fe2667e6bffa71d1c73e6e9b9531eff091d656aca046bc6"
+        },
+        {
+          "name": "OpenICow-0.4.2-Windows-x64-setup.exe",
+          "url": "https://openicow.com/downloads/0.4.2/OpenICow-0.4.2-Windows-x64-setup.exe",
+          "bytes": 779828528,
+          "sha256": "9365f1d94fb683242ab270baf1b74f91805635734f59beb059e08e9f395cfcb0"
+        },
+        {
+          "name": "OpenICow-0.4.2-Windows-x64.zip",
+          "url": "https://openicow.com/downloads/0.4.2/OpenICow-0.4.2-Windows-x64.zip",
+          "bytes": 804302414,
+          "sha256": "456bf7e16b40242d2199f14f6351b96afa0f51b4d7024f6818450bcf3411d259"
+        },
+        {
+          "name": "OpenICow-0.4.2-macOS-arm64.zip",
+          "url": "https://openicow.com/downloads/0.4.2/OpenICow-0.4.2-macOS-arm64.zip",
+          "bytes": 728916567,
+          "sha256": "fbe81291b8951eb2aa3f005fe28b66df558e021fb7059e067162cf52330a8f6f"
+        }
+      ]
     }
   ]
 }
