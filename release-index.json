@@ -132,6 +132,24 @@
           "sha256": "fbe81291b8951eb2aa3f005fe28b66df558e021fb7059e067162cf52330a8f6f"
         }
       ]
+    },
+    {
+      "tag": "openicow-v0.4.3",
+      "version": "0.4.3",
+      "assets": [
+        {
+          "name": "OpenICow-0.4.3-Windows-x64-setup.exe",
+          "url": "https://openicow.com/downloads/0.4.3/OpenICow-0.4.3-Windows-x64-setup.exe",
+          "bytes": 779831914,
+          "sha256": "1f98293b86685a6653130e2c64689bfb0dbcb54215e2867531fbe3efca9b3c83"
+        },
+        {
+          "name": "OpenICow-0.4.3-Windows-x64.zip",
+          "url": "https://openicow.com/downloads/0.4.3/OpenICow-0.4.3-Windows-x64.zip",
+          "bytes": 804305763,
+          "sha256": "6a9d2dc647bca0d95155c390c951f69b2bb94c5528d69cc3dd9eb5adf49140a4"
+        }
+      ]
     }
   ]
 }
