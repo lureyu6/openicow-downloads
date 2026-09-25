@@ -150,6 +150,24 @@
           "sha256": "6a9d2dc647bca0d95155c390c951f69b2bb94c5528d69cc3dd9eb5adf49140a4"
         }
       ]
+    },
+    {
+      "tag": "openicow-v0.4.5",
+      "version": "0.4.5",
+      "assets": [
+        {
+          "name": "OpenICow-0.4.5-Windows-x64-setup.exe",
+          "url": "https://openicow.com/downloads/0.4.5/OpenICow-0.4.5-Windows-x64-setup.exe",
+          "bytes": 779832553,
+          "sha256": "6459276ea6151d6d025034113d883ac1052f8f3174031a5b5fc93818c896461c"
+        },
+        {
+          "name": "OpenICow-0.4.5-Windows-x64.zip",
+          "url": "https://openicow.com/downloads/0.4.5/OpenICow-0.4.5-Windows-x64.zip",
+          "bytes": 804306120,
+          "sha256": "c8e0b32a39ed6115d42b148e336c96331e78bd642f14501e9b79fcefe109d51a"
+        }
+      ]
     }
   ]
 }
